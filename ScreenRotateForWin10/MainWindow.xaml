@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenRotateForWin10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="屏幕转向控制程序" Height="410" Width="360" ResizeMode="CanMinimize">
+    <!--Title="ScreenRotate"-->
+    <Grid Margin="0,0,-0.4,0">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top" Margin="0,0,-0.4,0">
+                <Label Content="要旋转的屏幕：" FontSize="16" FontWeight="Bold"/>
+                <!--Content="Screen to Rotate"-->
+                <ComboBox x:Name="choiceComboBox" SelectedIndex="0" Width="100" FontSize="16" ItemsSource="{Binding ScreenNums}"/>
+            </StackPanel>
+            <UniformGrid Rows="3" Columns="3" Margin="0,35,0,0" Height="220">
+                <Label/>
+                <Button Content="旋转180度" Width="90" Height="60" FontSize="16" Click="Button_Click_2"/>
+                <!--Content="rotate for 180 deg"-->
+                <Label/>
+                <Button Content="顺时针90" Width="90" Height="60" HorizontalAlignment="Right" FontSize="16" Click="Button_Click_3"/>
+                <!--Content="90 deg for clockwise"-->
+                <Button Content="默认值" Width="90" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Click="Button_Click_4"/>
+                <!--Content="default"-->
+                <Button Content="逆时针90" Width="90" Height="60" HorizontalAlignment="Left" FontSize="16" Click="Button_Click_1"/>
+                <!--Content="90 deg for anti-clockwise"-->
+                <Label/>
+                <Button Content="横向" Width="90" Height="60" FontSize="16" Click="Button_Click"/>
+                <!--Content="horizon"-->
+            </UniformGrid>
+        </StackPanel>
+        <Button x:Name="defaultButton" Content="所有恢复默认" Width="120" VerticalAlignment="Bottom" Margin="0,0,0,30" Height="30" FontSize="14" Click="DefaultButton_Click"/>
+        <!--Content="All reset to default"-->
     </Grid>
 </Window>
