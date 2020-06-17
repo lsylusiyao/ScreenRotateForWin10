@@ -1,5 +1,7 @@
 # Rotate Screen for Win 10
 
+Some part of codes come from [@Yosh](https://stackoverflow.com/users/6764710/yosh) on [stackoverflow](https://stackoverflow.com/questions/39288135/rotating-the-display-programmatically). Thanks.
+
 The program is written in WPF(C#) on `.net Framework 4.6`, in which the Windows API is called to rotate screen like the action in the Screen Setting. The UI is written in **Chinese** but with **English comments**.
 
 ---
