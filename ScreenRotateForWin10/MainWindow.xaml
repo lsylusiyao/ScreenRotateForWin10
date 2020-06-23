@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenRotateForWin10"
         mc:Ignorable="d"
-        Title="屏幕转向控制程序" Height="410" Width="360" ResizeMode="CanMinimize">
+        Title="屏幕转向控制程序" Height="410" Width="360" ResizeMode="CanMinimize" LocationChanged="Window_LocationChanged">
     <!--Title="ScreenRotate"-->
     <Grid Margin="0,0,-0.4,0">
         <StackPanel Orientation="Vertical">
@@ -14,7 +14,7 @@
                 <!--Content="Screen to Rotate"-->
                 <ComboBox x:Name="choiceComboBox" Width="100" FontSize="16" ItemsSource="{Binding ScreenNums}"/>
             </StackPanel>
-            <UniformGrid Rows="3" Columns="3" Margin="0,35,0,0" Height="220">
+            <UniformGrid Rows="3" Columns="3" Margin="0,30,0,0" Height="220">
                 <Label/>
                 <Button Content="旋转180度" Width="90" Height="60" FontSize="16" Click="Button_Click_2"/>
                 <!--Content="rotate for 180 deg"-->
@@ -30,7 +30,11 @@
                 <!--Content="horizon"-->
             </UniformGrid>
         </StackPanel>
-        <Button x:Name="defaultButton" Content="所有恢复默认" Width="120" VerticalAlignment="Bottom" Margin="0,0,0,30" Height="30" FontSize="14" Click="DefaultButton_Click"/>
+        <Button x:Name="defaultButton" Content="所有恢复默认" Width="120" VerticalAlignment="Bottom" Margin="0,0,0,42" Height="30" FontSize="14" Click="DefaultButton_Click"/>
         <!--Content="All reset to default"-->
+        <Grid VerticalAlignment="Bottom">
+            <Label x:Name="currScreenLabel" Content="当前：？号屏幕" FontSize="16" HorizontalAlignment="Left"/> <!--Context="Curr: NO.? Screen"-->
+            <Label x:Name="primaryScreenLabel" Content="主屏幕：？号屏幕" FontSize="16" HorizontalAlignment="Right"/> <!--Context="Primary Screen: NO.? Screen"-->
+        </Grid>
     </Grid>
 </Window>
