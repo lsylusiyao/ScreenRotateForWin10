@@ -73,12 +73,12 @@ namespace ScreenRotateForWin10
             return result;
         }
 
-        public static void ResetAllRotations()
+        public static void ResetAllRotations(int screenCount = default)
         {
             try
             {
                 uint i = 0;
-                while (++i <= GetScreenCount()) // make exception less
+                while (++i <= (screenCount == default ? 64 : screenCount)) // make exception less
                 {
                     Rotate(i, Orientations.DEGREES_CW_0);
                 }
@@ -87,20 +87,6 @@ namespace ScreenRotateForWin10
             {
                 // Everything is fine, just reached the last display
             }
-        }
-
-        /// <summary>
-        /// Get the number of screens
-        /// </summary>
-        /// <returns>screen count</returns>
-        public static uint GetScreenCount()
-        {
-            DISPLAY_DEVICE d = new DISPLAY_DEVICE();
-            d.cb = Marshal.SizeOf(d);
-
-            uint result = 0;
-            while (!APIWrapper.EnumDisplayDevices(null, ++result - 1, ref d, 0)) { }
-            return result;
         }
     }
 

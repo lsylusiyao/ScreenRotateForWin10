@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace ScreenRotateForWin10
 {
@@ -22,14 +23,15 @@ namespace ScreenRotateForWin10
         private void Init()
         {
             var result = new List<string>();
+            screenCount = Screen.AllScreens.Count();
             result.AddRange(
-                Enumerable.Range(1, (int)(Display.GetScreenCount()))
-                .Select(x => $"{x}号屏幕") // $"NO.{x} Screen"
+                Enumerable.Range(0, screenCount)
+                .Select(x => $"{x + 1}号屏幕") // $"NO.{x} Screen"
                 );
             result.Add("所有"); // All
             screenList = result;
             choiceComboBox.ItemsSource = screenList;
-            screenCount = (int)Display.GetScreenCount();
+            choiceComboBox.SelectedIndex = result.Count - 1; // Last
         }
 
         private void RotateChoice(int choice, Display.Orientations degree)
@@ -45,7 +47,7 @@ namespace ScreenRotateForWin10
             }
         }
 
-        private void DefaultButton_Click(object sender, RoutedEventArgs e) => Display.ResetAllRotations();
+        private void DefaultButton_Click(object sender, RoutedEventArgs e) => Display.ResetAllRotations(screenCount);
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
